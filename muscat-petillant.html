@@ -23,7 +23,7 @@ img{display:block;max-width:100%}a{color:inherit}
 .link:hover::after{transform:scaleX(.35)}.link:hover{color:var(--bordeaux)}
 nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(252,251,248,.96);backdrop-filter:blur(8px);box-shadow:0 1px 0 var(--ligne)}
 .nav-in{max-width:1440px;margin:0 auto;padding:0 clamp(24px,4vw,64px);height:72px;display:flex;align-items:center;justify-content:space-between}
-.menu{display:flex;gap:34px;list-style:none}
+.menu{display:flex;gap:38px;list-style:none}
 .menu a{font-family:var(--sans);font-size:10.5px;font-weight:500;letter-spacing:.24em;text-transform:uppercase;text-decoration:none;color:var(--gris);transition:color .3s}
 .menu a:hover,.menu a[aria-current]{color:var(--encre)}
 #burger{display:none;background:none;border:none;cursor:pointer;width:30px;height:20px;position:relative}
@@ -80,10 +80,10 @@ footer .logo-svg{width:min(240px,60vw);margin:0 auto 28px;color:var(--encre)}
 /* --- Sous-menu produits --- */
 .menu .has-sub{position:relative}
 .menu .has-sub>a::after{content:" ▾";font-size:8px;vertical-align:2px}
-.submenu{list-style:none;position:absolute;top:100%;left:50%;transform:translateX(-50%);background:rgba(252,251,248,.98);backdrop-filter:blur(8px);box-shadow:0 1px 0 #E4E0D4,0 14px 30px rgba(25,23,18,.08);padding:14px 0;min-width:200px;opacity:0;visibility:hidden;transition:opacity .3s;z-index:110}
+.submenu{list-style:none;position:absolute;top:100%;left:50%;transform:translateX(-50%);background:rgba(252,251,248,.98);backdrop-filter:blur(8px);box-shadow:0 1px 0 #E4E0D4,0 14px 30px rgba(25,23,18,.08);padding:14px 0;min-width:220px;opacity:0;visibility:hidden;transition:opacity .3s;z-index:110}
 .menu .has-sub:hover .submenu,.menu .has-sub:focus-within .submenu{opacity:1;visibility:visible}
 .submenu li{padding:0;text-align:center}
-.submenu a{display:block;padding:9px 22px;color:#6F6A5F!important;font-family:'Inter',sans-serif;font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;text-decoration:none}
+.submenu a{display:block;padding:9px 22px;white-space:nowrap;color:#6F6A5F!important;font-family:'Inter',sans-serif;font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;text-decoration:none}
 .submenu a:hover{color:#191712!important}
 @media(max-width:960px){
 .submenu{position:static;transform:none;opacity:1;visibility:visible;box-shadow:none;background:transparent;padding:8px 0 0}
@@ -101,10 +101,10 @@ footer .logo-svg{width:min(240px,60vw);margin:0 auto 28px;color:var(--encre)}
       <li class="has-sub"><a href="index.html#vins">Nos produits</a>
         <ul class="submenu">
           <li><a href="gamme-alexandra.html">Cuvées Alexandra</a></li>
-          <li><a href="gamme-clos-marc-aurele.html">Les Clos Marc Aurèle</a></li>
+          <li><a href="gamme-clos-marc-aurele.html">Clos Marc-Aurèle</a></li>
           <li><a href="suarte.html">Cuvées Suarte</a></li>
           <li><a href="heritage.html">Cuvées Heritage</a></li>
-          <li><a href="gamme-prestige.html">Cuvées Prestige</a></li>
+          <li><a href="gamme-tanella.html">Domaine de Tanella</a></li>
           <li><a href="muscat-petillant.html" aria-current="page">Notre Muscat</a></li>
         </ul>
       </li>

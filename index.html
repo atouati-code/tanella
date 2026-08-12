@@ -62,8 +62,7 @@ p.body{color:var(--gris);max-width:62ch}
 /* ---------- Nav ---------- */
 nav{position:fixed;top:0;left:0;right:0;z-index:100;transition:background .5s ease,box-shadow .5s ease}
 nav.solid{background:rgba(252,251,248,.96);backdrop-filter:blur(8px);box-shadow:0 1px 0 var(--ligne)}
-.nav-in{max-width:1440px;margin:0 auto;padding:0 clamp(24px,4vw,64px);height:88px;display:flex;align-items:center;justify-content:space-between;transition:height .5s ease}
-nav.solid .nav-in{height:66px}
+.nav-in{max-width:1440px;margin:0 auto;padding:0 clamp(24px,4vw,64px);height:72px;display:flex;align-items:center;justify-content:space-between}
 .brand{font-family:var(--serif);font-size:21px;font-weight:400;letter-spacing:.06em;text-decoration:none;color:var(--blanc);transition:color .5s;white-space:nowrap}
 .brand em{font-style:italic}
 nav.solid .brand{color:var(--encre)}
@@ -253,10 +252,10 @@ footer{background:var(--ivoire);border-top:1px solid var(--ligne);padding:clamp(
 /* --- Sous-menu produits --- */
 .menu .has-sub{position:relative}
 .menu .has-sub>a::after{content:" ▾";font-size:8px;vertical-align:2px}
-.submenu{list-style:none;position:absolute;top:100%;left:50%;transform:translateX(-50%);background:rgba(252,251,248,.98);backdrop-filter:blur(8px);box-shadow:0 1px 0 #E4E0D4,0 14px 30px rgba(25,23,18,.08);padding:14px 0;min-width:200px;opacity:0;visibility:hidden;transition:opacity .3s;z-index:110}
+.submenu{list-style:none;position:absolute;top:100%;left:50%;transform:translateX(-50%);background:rgba(252,251,248,.98);backdrop-filter:blur(8px);box-shadow:0 1px 0 #E4E0D4,0 14px 30px rgba(25,23,18,.08);padding:14px 0;min-width:220px;opacity:0;visibility:hidden;transition:opacity .3s;z-index:110}
 .menu .has-sub:hover .submenu,.menu .has-sub:focus-within .submenu{opacity:1;visibility:visible}
 .submenu li{padding:0;text-align:center}
-.submenu a{display:block;padding:9px 22px;color:#6F6A5F!important;font-family:'Inter',sans-serif;font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;text-decoration:none}
+.submenu a{display:block;padding:9px 22px;white-space:nowrap;color:#6F6A5F!important;font-family:'Inter',sans-serif;font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;text-decoration:none}
 .submenu a:hover{color:#191712!important}
 @media(max-width:960px){
 .submenu{position:static;transform:none;opacity:1;visibility:visible;box-shadow:none;background:transparent;padding:8px 0 0}
@@ -290,7 +289,7 @@ if(t && (Date.now()-parseInt(t,10)) < 30*24*3600*1000){document.documentElement.
 <!-- Nav -->
 <nav id="nav">
   <div class="nav-in">
-    <a class="brand" href="#top" aria-label="Domaine de Tanella — Accueil"><svg class="logo-svg" style="height:44px;width:auto" role="img"><use href="#logo-tanella"/></svg></a>
+    <a class="brand" href="#top" aria-label="Domaine de Tanella — Accueil"><svg class="logo-svg" style="height:40px;width:auto" role="img"><use href="#logo-tanella"/></svg></a>
     <button id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
     <ul class="menu" id="menu">
       <li><a href="#domaine">Notre domaine</a></li>
@@ -300,7 +299,7 @@ if(t && (Date.now()-parseInt(t,10)) < 30*24*3600*1000){document.documentElement.
           <li><a href="gamme-clos-marc-aurele.html">Clos Marc-Aurèle</a></li>
           <li><a href="suarte.html">Cuvées Suarte</a></li>
           <li><a href="heritage.html">Cuvées Heritage</a></li>
-          <li><a href="gamme-prestige.html">Cuvées Prestige</a></li>
+          <li><a href="gamme-tanella.html">Domaine de Tanella</a></li>
           <li><a href="muscat-petillant.html">Notre Muscat</a></li>
         </ul>
       </li>
@@ -393,7 +392,7 @@ if(t && (Date.now()-parseInt(t,10)) < 30*24*3600*1000){document.documentElement.
       <li><a href="gamme-clos-marc-aurele.html"><span class="wine-name">Clos Marc-Aurèle</span><span class="wine-meta">3 cuvées</span></a></li>
       <li><a href="suarte.html"><span class="wine-name">Cuvées Suarte</span><span class="wine-meta">3 cuvées</span></a></li>
       <li><a href="heritage.html"><span class="wine-name">Cuvées Heritage</span><span class="wine-meta">3 cuvées</span></a></li>
-      <li><a href="gamme-prestige.html"><span class="wine-name">Cuvées Prestige</span><span class="wine-meta">3 cuvées</span></a></li>
+      <li><a href="gamme-tanella.html"><span class="wine-name">Domaine de Tanella</span><span class="wine-meta">3 cuvées</span></a></li>
       <li><a href="muscat-petillant.html"><span class="wine-name">Notre Muscat</span><span class="wine-meta">1 cuvée</span></a></li>
     </ul>
   </div>
