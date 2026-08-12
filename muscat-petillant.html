@@ -76,6 +76,19 @@ footer .logo-svg{width:min(240px,60vw);margin:0 auto 28px;color:var(--encre)}
 .foot-links a:hover{color:var(--encre)}
 .alcool{font-family:var(--sans);font-size:9.5px;letter-spacing:.18em;text-transform:uppercase;color:#B4AFA2}
 @media(max-width:900px){.product{grid-template-columns:1fr;padding-top:120px}.gallery{position:static}}
+
+/* --- Sous-menu produits --- */
+.menu .has-sub{position:relative}
+.menu .has-sub>a::after{content:" ▾";font-size:8px;vertical-align:2px}
+.submenu{list-style:none;position:absolute;top:100%;left:50%;transform:translateX(-50%);background:rgba(252,251,248,.98);backdrop-filter:blur(8px);box-shadow:0 1px 0 #E4E0D4,0 14px 30px rgba(25,23,18,.08);padding:14px 0;min-width:200px;opacity:0;visibility:hidden;transition:opacity .3s;z-index:110}
+.menu .has-sub:hover .submenu,.menu .has-sub:focus-within .submenu{opacity:1;visibility:visible}
+.submenu li{padding:0;text-align:center}
+.submenu a{display:block;padding:9px 22px;color:#6F6A5F!important;font-family:'Inter',sans-serif;font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;text-decoration:none}
+.submenu a:hover{color:#191712!important}
+@media(max-width:960px){
+.submenu{position:static;transform:none;opacity:1;visibility:visible;box-shadow:none;background:transparent;padding:8px 0 0}
+.submenu a{padding:8px 0;font-size:11px}
+}
 </style>
 </head>
 <body>
@@ -84,14 +97,21 @@ footer .logo-svg{width:min(240px,60vw);margin:0 auto 28px;color:var(--encre)}
   <a href="index.html" aria-label="Domaine de Tanella — Accueil"><svg class="logo-svg" style="height:40px;width:auto;color:var(--encre)"><use href="#logo-tanella"/></svg></a>
   <button id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
   <ul class="menu" id="menu">
-    <li><a href="index.html">Accueil</a></li>
-    <li><a href="gamme-alexandra.html">Gamme Alexandra</a></li>
-    <li><a href="gamme-clos-marc-aurele.html">Gamme Clos Marc Aurèle</a></li>
-    <li><a href="gamme-prestige.html">Gamme Prestige</a></li>
-    <li><a href="gamme-domaine-de-tanella.html">Gamme Domaine de Tanella</a></li>
-    <li><a href="monocepages.html">Monocépages</a></li>
-    <li><a href="muscat-petillant.html" aria-current="page">Muscat Pétillant</a></li>
-  </ul>
+      <li><a href="index.html#domaine">Notre domaine</a></li>
+      <li class="has-sub"><a href="index.html#vins">Nos produits</a>
+        <ul class="submenu">
+          <li><a href="gamme-alexandra.html">Cuvées Alexandra</a></li>
+          <li><a href="gamme-clos-marc-aurele.html">Les Clos Marc Aurèle</a></li>
+          <li><a href="suarte.html">Cuvées Suarte</a></li>
+          <li><a href="heritage.html">Cuvées Heritage</a></li>
+          <li><a href="gamme-prestige.html">Cuvées Prestige</a></li>
+          <li><a href="muscat-petillant.html" aria-current="page">Notre Muscat</a></li>
+        </ul>
+      </li>
+      <li><a href="engagements.html">Nos engagements</a></li>
+      <li><a href="index.html#caveaux">Nos caveaux</a></li>
+      <li><a href="index.html#contact">Nous Contacter</a></li>
+    </ul>
 </div></nav>
 
 <main class="product">
@@ -112,7 +132,7 @@ footer .logo-svg{width:min(240px,60vw);margin:0 auto 28px;color:var(--encre)}
   </div>
 
   <div class="pinfo">
-    <span class="label">Gamme Muscat — Vin pétillant demi-sec</span>
+    <span class="label">Notre Muscat — Vin pétillant demi-sec</span>
     <h1>Muscat Pétillant <em>d'Alexandrie</em> Blanc</h1>
     <p class="millesime">Millésime 2024</p>
     <span class="carton">Carton de six bouteilles</span>
@@ -133,18 +153,17 @@ footer .logo-svg{width:min(240px,60vw);margin:0 auto 28px;color:var(--encre)}
       <li><span class="k">Production</span><span class="v">Limitée à 4 000 bouteilles</span></li>
       <li><span class="k">Élaboration</span><span class="v">Prise de mousse en cuves autoclaves</span></li>
       <li><span class="k">Conditionnement</span><span class="v">Carton de 6 bouteilles — 75 cl</span></li>
-      <li><span class="k">Livraison</span><span class="v">Frais de port offerts dès 24 bouteilles</span></li>
     </ul>
     <div class="actions">
-      <a class="link" href="https://www.domaine-tanella.com/cuvee/muscat-petillant-dalexandrie-blanc-2023/" target="_blank" rel="noopener">Commander sur la boutique</a>
       <a class="link" href="index.html#caveaux">Déguster en caveau</a>
+      <a class="link" href="index.html#contact">Nous contacter</a>
     </div>
   </div>
 </main>
 
 <section class="accords">
   <h2>À déguster</h2>
-  <p>Le Muscat Pétillant du Domaine de Tanella est un choix idéal pour toutes les occasions spéciales partagées entre amis ou en famille. Servi bien frais, ce demi-sec peu sucré accompagne l'apéritif comme les desserts aux fruits blancs. Frais de port offerts à partir de 24 bouteilles.</p>
+  <p>Le Muscat Pétillant du Domaine de Tanella est un choix idéal pour toutes les occasions spéciales partagées entre amis ou en famille. Servi bien frais, ce demi-sec peu sucré accompagne l'apéritif comme les desserts aux fruits blancs.</p>
 </section>
 
 <footer>
