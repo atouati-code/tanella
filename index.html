@@ -218,6 +218,9 @@ nav.solid #burger span{background:var(--encre)}
 .cform input:focus,.cform textarea:focus{border-color:var(--encre)}
 .cform textarea{resize:vertical;min-height:110px}
 .cform .rgpd{font-family:var(--sans);font-size:11.5px;color:var(--gris);line-height:1.6}
+.cform .form-status{font-family:var(--sans);font-size:13px;line-height:1.6;margin-top:16px;min-height:1em}
+.cform .form-status.success{color:#3E6B52}
+.cform .form-status.error{color:var(--bordeaux)}
 .cform button{justify-self:start;background:none;border:none;cursor:pointer;font-family:var(--sans);font-size:11px;font-weight:500;letter-spacing:.24em;text-transform:uppercase;color:var(--encre);padding:0 0 5px;border-bottom:1px solid var(--encre);transition:color .3s,border-color .3s}
 .cform button:hover{color:var(--bordeaux);border-color:var(--bordeaux)}
 .coords{display:grid;gap:34px}
@@ -483,13 +486,17 @@ if(t && (Date.now()-parseInt(t,10)) < 30*24*3600*1000){document.documentElement.
   <span class="label rv">Contact</span>
   <h2 class="display rv">Nous <em>contacter</em></h2>
   <div class="contact-grid">
-    <form class="cform rv" id="cform">
-      <label><span class="flabel">Votre nom *</span><input type="text" id="c-nom" required autocomplete="name"></label>
-      <label><span class="flabel">Votre adresse de messagerie *</span><input type="email" id="c-email" required autocomplete="email"></label>
-      <label><span class="flabel">Objet</span><input type="text" id="c-objet"></label>
-      <label><span class="flabel">Votre message</span><textarea id="c-message"></textarea></label>
+    <form class="cform rv" id="cform" method="POST" action="https://formsubmit.co/contact@domaine-tanella.com">
+      <label><span class="flabel">Votre nom *</span><input type="text" id="c-nom" name="name" required autocomplete="name"></label>
+      <label><span class="flabel">Votre adresse de messagerie *</span><input type="email" id="c-email" name="email" required autocomplete="email"></label>
+      <label><span class="flabel">Objet</span><input type="text" id="c-objet" name="_subject" placeholder="Demande de contact — site Domaine de Tanella"></label>
+      <label><span class="flabel">Votre message</span><textarea id="c-message" name="message" required></textarea></label>
+      <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
+      <input type="hidden" name="_template" value="table">
+      <input type="hidden" name="_captcha" value="false">
       <p class="rgpd">En soumettant ce formulaire, j'accepte que les informations saisies soient exploitées dans le cadre de la demande de contact et de la relation commerciale qui peut en découler.</p>
       <button type="submit">Envoyer le message</button>
+      <p class="form-status" id="cform-status" role="status" aria-live="polite"></p>
     </form>
     <div class="coords rv">
       <div>
@@ -588,16 +595,36 @@ menu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{menu.class
 const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.12});
 document.querySelectorAll('.rv').forEach(el=>io.observe(el));
 
-// Formulaire de contact : compose un email vers contact@domaine-tanella.com
-document.getElementById('cform').addEventListener('submit', e => {
+// Formulaire de contact : envoi réel vers contact@domaine-tanella.com (service FormSubmit, sans backend à héberger)
+const cform = document.getElementById('cform');
+const cformStatus = document.getElementById('cform-status');
+cform.addEventListener('submit', async e => {
   e.preventDefault();
-  const nom = document.getElementById('c-nom').value.trim();
-  const email = document.getElementById('c-email').value.trim();
-  const objet = document.getElementById('c-objet').value.trim() || 'Demande de contact';
-  const msg = document.getElementById('c-message').value.trim();
-  const corps = `${msg}\n\n—\n${nom}\n${email}`;
-  window.location.href = 'mailto:contact@domaine-tanella.com?subject=' +
-    encodeURIComponent(objet) + '&body=' + encodeURIComponent(corps);
+  const objetInput = document.getElementById('c-objet');
+  if (!objetInput.value.trim()) objetInput.value = 'Demande de contact — site Domaine de Tanella';
+  const btn = cform.querySelector('button[type="submit"]');
+  const originalLabel = btn.textContent;
+  btn.disabled = true;
+  btn.textContent = 'Envoi en cours…';
+  cformStatus.textContent = '';
+  cformStatus.className = 'form-status';
+  try {
+    const res = await fetch('https://formsubmit.co/ajax/contact@domaine-tanella.com', {
+      method: 'POST',
+      headers: { 'Accept': 'application/json' },
+      body: new FormData(cform)
+    });
+    if (!res.ok) throw new Error('network');
+    cform.reset();
+    cformStatus.textContent = 'Merci, votre message a bien été envoyé. Nous vous répondrons dans les meilleurs délais.';
+    cformStatus.classList.add('success');
+  } catch (err) {
+    cformStatus.textContent = "Une erreur est survenue lors de l'envoi. Vous pouvez aussi nous écrire directement à contact@domaine-tanella.com.";
+    cformStatus.classList.add('error');
+  } finally {
+    btn.disabled = false;
+    btn.textContent = originalLabel;
+  }
 });
 
 // ===== Flux Instagram dynamique (via Behold.so — gratuit) =====
